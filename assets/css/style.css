@@ -1,0 +1,22 @@
+
+.jumbotron {
+    align-content: center;
+    background-color: orange;
+    color: white;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+
+}
+
+.heading-container {
+
+    margin-left: 40px;
+    margin-right: 40px;
+}
