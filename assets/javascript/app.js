@@ -17,13 +17,14 @@
   var name = "";
   var destination = "";
   var firstTrain = "";
-  var frequency = 0;
+  var frequency = "";
 
+$(document).ready(function() {
 //Everytime submit button clicked, all user input is stored in variables defined in On Click function
   $("#submitBtn").on("click",function(){
       var trainName = $("#nameInput").val().trim();
       var destination = $("#destinationInput").val().trim();
-      var firstTrain = moment($("#firstTrainInput").val().trim(), "HH:mm").subtract(10, "years").format("x");
+      var firstTrain = moment($("#firstTrainInput").val().trim(), "HH:mm").subtract(1, "years").format("x");
       var frequency = $("#frequencyInput").val().trim();
 
      var newTrain = {
@@ -66,6 +67,6 @@ trainInfo.ref().on("child_added",function(snapshot){
 })
 
 
-
+})
 
 

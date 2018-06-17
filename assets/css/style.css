@@ -1,14 +1,19 @@
 
 .jumbotron {
     align-content: center;
-    background-color: orange;
+    background-color: #336699;
     color: white;
     margin-bottom: 20px;
 }
 
-h1 {
+#h1 {
     text-align: center;
 }
+
+#h3 {
+    text-align: center;
+}
+
 
 p {
     text-align: center;
@@ -20,3 +25,24 @@ p {
     margin-left: 40px;
     margin-right: 40px;
 }
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #336699;
+    color: white;
+}
+
+.panel-primary {
+    border-color: #336699;
+}
+
+.btn-primary {
+    background-color: #336699;
+    margin-left: 30px;
+}
+
+.form-group {
+    margin: 30px;
+}
+
+
