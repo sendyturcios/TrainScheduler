@@ -1,30 +1,31 @@
 
  // Initialize Firebase
  var config = {
-    apiKey: "AIzaSyAeffOTVWdWWCDLMkAB0rrEAmjvFrb2mHU",
-    authDomain: "trainapp-f4973.firebaseapp.com",
-    databaseURL: "https://trainapp-f4973.firebaseio.com",
-    projectId: "trainapp-f4973",
-    storageBucket: "trainapp-f4973.appspot.com",
-    messagingSenderId: "53445332244"
+    apiKey: "AIzaSyChVjlgjr8z2LyIcKWzuoLIfsy5lH077HA",
+    authDomain: "my-train-app-e996f.firebaseapp.com",
+    databaseURL: "https://my-train-app-e996f.firebaseio.com",
+    projectId: "my-train-app-e996f",
+    storageBucket: "",
+    messagingSenderId: "803587208126"
   };
   firebase.initializeApp(config);
 
 
 // create variable to serve as reference to firebase
-  var trainInfo = firebase.database();
+  var database= firebase.database();
 
-  var name = "";
-  var destination = "";
-  var firstTrain = "";
-  var frequency = "";
 
-$(document).ready(function() {
+
+
+
 //Everytime submit button clicked, all user input is stored in variables defined in On Click function
-  $("#submitBtn").on("click",function(){
+  $("#addTrainBtn").on("click",function(){
+   
+  
+//User input
       var trainName = $("#nameInput").val().trim();
       var destination = $("#destinationInput").val().trim();
-      var firstTrain = moment($("#firstTrainInput").val().trim(), "HH:mm").subtract(1, "years").format("x");
+      var firstTrain = moment($("#firstTrainInput").val().trim(), "HH:mm").format("HH:mm");
       var frequency = $("#frequencyInput").val().trim();
 
      var newTrain = {
@@ -32,14 +33,23 @@ $(document).ready(function() {
          destination: destination,
          firstTrain: firstTrain,
          frequency: frequency
-     }
+     };
 
 
-// adds data to table  
-  trainInfo.ref().push(newTrain);
+// pushes data to table  
+  database.ref().push(newTrain);
 
-  alert("Train Added!");
 
+  // Logs to console
+  console.log(newTrain.name);
+  console.log(newTrain.destination);
+  console.log(newTrain.firstTrain);
+  console.log(newTrain.frequency);
+
+  alert("Train successfully added");
+
+ 
+//Clears input box
   $("#nameInput").val("");
   $("#destinationInput").val("");
   $("#firstTrainInput").val("");
@@ -47,10 +57,13 @@ $(document).ready(function() {
 
   return false;
 
-})
+});
 
-trainInfo.ref().on("child_added",function(snapshot){
-    var name = snapshot.val().name;
+database.ref().on("child_added",function(snapshot){
+
+    console.log(snapshot.val());
+
+    var name = snapshot.val().trainName;
     var destination = snapshot.val().destination;
     var frequency = snapshot.val().frequency;
     var firstTrain = snapshot.val().firstTrain;
@@ -64,7 +77,11 @@ trainInfo.ref().on("child_added",function(snapshot){
     console.log(arrival);
     
 
-})
+
+
+  // Add train data into the table
+  $("#train-table > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
+  frequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td></tr>");
 
 
 })
