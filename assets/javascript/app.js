@@ -63,7 +63,7 @@ database.ref().on("child_added",function(snapshot){
 
     console.log(snapshot.val());
 
-    var name = snapshot.val().trainName;
+    var name = snapshot.val().name;
     var destination = snapshot.val().destination;
     var frequency = snapshot.val().frequency;
     var firstTrain = snapshot.val().firstTrain;
@@ -80,7 +80,7 @@ database.ref().on("child_added",function(snapshot){
 
 
   // Add train data into the table
-  $("#train-table > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
+  $("#trainTable > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
   frequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td></tr>");
 
 
